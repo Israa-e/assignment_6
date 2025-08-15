@@ -253,11 +253,11 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Container(
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
-            child: Image.asset("assets/images/img2.png"),
+            child: Image.asset("assets/images/img2.png", fit: BoxFit.fill),
           ),
           Positioned(
             bottom: 20,
-            right: -20,
+            left: 120,
             child: Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
