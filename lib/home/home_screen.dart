@@ -1,3 +1,4 @@
+import 'package:assigment_1/widget/section_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stroke_text/stroke_text.dart';
 
@@ -210,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(height: 25),
-            tap(title: "Top Rated Freelances"),
+            SectionWidget(title: "Top Rated Freelances"),
             SizedBox(
               height: 137,
               child: ListView.builder(
@@ -226,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            tap(title: "Top Services"),
+            SectionWidget(title: "Top Services"),
             SizedBox(height: 20),
             SizedBox(
               height: 514,
@@ -436,55 +437,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Row tap({title}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft, // Start direction
-              end: Alignment.centerRight, // End direction
-              colors: [
-                const Color(0xFFC2D7F2), // 100% opacity
-                const Color(0xffffffff).withValues(alpha: 0.0), // 0% opacity
-              ],
-            ),
-          ),
-          child: Text(
-            title ?? "Top Rated Freelances",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        TextButton(
-          onPressed: () {},
-          child: Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: Color(0xff154883), width: 1),
-              ),
-            ),
-            // padding: const EdgeInsets.only(
-            //   bottom: 1,
-            // ), // space between text & underline
-            child: const Text(
-              "View All",
-              style: TextStyle(
-                fontSize: 14,
-                color: Color(0xff154883),
-                decoration: TextDecoration.none,
-              ),
             ),
           ),
         ),
