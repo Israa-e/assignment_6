@@ -1,3 +1,4 @@
+import 'package:assigment_1/widget/freelances.dart';
 import 'package:assigment_1/widget/section_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stroke_text/stroke_text.dart';
@@ -221,7 +222,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder:
                     (context, index) => Padding(
                       padding: const EdgeInsets.only(left: 24.0, bottom: 23),
-                      child: freelances(),
+                      child: FreelancesInfo(
+                        img: "assets/images/img1.png",
+                        name: "Wade Warren",
+                        title: "Beautician",
+                      ),
                     ),
                 itemCount: 20,
               ),
@@ -364,83 +369,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-    );
-  }
-
-  freelances() {
-    return Stack(
-      clipBehavior: Clip.none,
-      alignment: Alignment.center,
-      children: [
-        Container(
-          height: 72,
-          width: 72,
-          decoration: BoxDecoration(shape: BoxShape.circle),
-          child: Center(
-            child: Image.asset("assets/images/img1.png", fit: BoxFit.cover),
-          ),
-        ),
-        Positioned(
-          bottom: -23,
-          left: -5,
-          child: Container(
-            padding: EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xffE7EFFC),
-                  offset: Offset(2, 2),
-                  blurRadius: 16,
-                  spreadRadius: 0,
-                ),
-              ],
-            ),
-            child: Column(
-              children: [
-                Text(
-                  "Wade Warren",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: const Color(0xFF1D1F24).withValues(alpha: 0.7),
-                  ),
-                ),
-                SizedBox(height: 4),
-                Text(
-                  "Beautician",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: const Color(0xFF1D1F24),
-                  ),
-                ),
-                SizedBox(height: 4),
-
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 2, horizontal: 6),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-
-                    color: Color(0x14827BEB),
-                  ),
-                  child: Row(
-                    children: [
-                      Image.asset("assets/images/star.png"),
-                      Text(
-                        "4.9",
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: const Color(0xFF1D1F24),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
