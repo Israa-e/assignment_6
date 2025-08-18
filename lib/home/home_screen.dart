@@ -1,5 +1,10 @@
+import 'package:assigment_1/widget/book_widget.dart';
+import 'package:assigment_1/widget/deal_widget.dart';
 import 'package:assigment_1/widget/freelances.dart';
+import 'package:assigment_1/widget/rating_widget.dart';
 import 'package:assigment_1/widget/section_widget.dart';
+import 'package:assigment_1/widget/top_services.dart';
+import 'package:assigment_1/widget/workshops_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stroke_text/stroke_text.dart';
 
@@ -16,6 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          scrolledUnderElevation: 0,
+
+          elevation: 0,
           leading: Image.asset('assets/icons/menu.png'),
           title: Image.asset("assets/images/logo.png", height: 24),
           actions: [
@@ -29,73 +37,75 @@ class _HomeScreenState extends State<HomeScreen> {
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           physics: BouncingScrollPhysics(),
-          padding: EdgeInsets.symmetric(horizontal: 16),
           children: [
             SizedBox(height: 18),
 
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Image.asset("assets/icons/search.png"),
-                      hintText: "Search here",
-                      hintStyle: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFF232939)..withValues(alpha: 0.8),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
-                        borderSide: BorderSide(
-                          width: 1,
-                          color: Color(0xffB2BACD),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Image.asset("assets/icons/search.png"),
+                        hintText: "Search here",
+                        hintStyle: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF232939)..withValues(alpha: 0.8),
                         ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
-                        borderSide: BorderSide(
-                          width: 1,
-                          color: Color(0xffB2BACD),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide(
+                            width: 1,
+                            color: Color(0xffB2BACD),
+                          ),
                         ),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
-                        borderSide: BorderSide(
-                          width: 1,
-                          color: Color(0xffB2BACD),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide(
+                            width: 1,
+                            color: Color(0xffB2BACD),
+                          ),
                         ),
-                      ),
-                      disabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
-                        borderSide: BorderSide(
-                          width: 1,
-                          color: Color(0xffB2BACD),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide(
+                            width: 1,
+                            color: Color(0xffB2BACD),
+                          ),
                         ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
-                        borderSide: BorderSide(
-                          width: 1,
-                          color: Color(0xffB2BACD),
+                        disabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide(
+                            width: 1,
+                            color: Color(0xffB2BACD),
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide(
+                            width: 1,
+                            color: Color(0xffB2BACD),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
 
-                Container(
-                  height: 51,
-                  width: 51,
-                  margin: EdgeInsets.only(left: 12),
-                  padding: EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(14),
-                    border: Border.all(width: 1, color: Color(0xffB2BACD)),
+                  Container(
+                    height: 51,
+                    width: 51,
+                    margin: EdgeInsets.only(left: 12),
+                    padding: EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(width: 1, color: Color(0xffB2BACD)),
+                    ),
+                    child: Image.asset('assets/icons/sort.png'),
                   ),
-                  child: Image.asset('assets/icons/sort.png'),
-                ),
-              ],
+                ],
+              ),
             ),
             SizedBox(height: 16),
             Container(
@@ -231,6 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: 20,
               ),
             ),
+            SizedBox(height: 40),
 
             SectionWidget(title: "Top Services"),
             SizedBox(height: 20),
@@ -238,136 +249,50 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 514,
               child: ListView.separated(
                 scrollDirection: Axis.vertical,
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: 3,
-                itemBuilder: (context, index) => topServices(),
+                itemBuilder: (context, index) => TopServices(),
                 separatorBuilder: (BuildContext context, int index) {
                   return SizedBox(height: 25);
                 },
               ),
             ),
+            SizedBox(height: 40),
+
+            SectionWidget(title: "Best Bookings"),
+            SizedBox(height: 20),
+
+            DealWidget(),
+            SizedBox(height: 26),
+
+            Booking(),
+            SizedBox(height: 26),
+
+            Booking(),
+
+            SizedBox(height: 40),
+
+            SectionWidget(title: "Recommended Workshops"),
+            SizedBox(height: 26),
+            GridView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 25,
+                childAspectRatio: 0.7,
+              ),
+              itemCount: 4,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return WorkshopsWidget();
+              },
+            ),
           ],
         ),
-      ),
-    );
-  }
-
-  SizedBox topServices() {
-    return SizedBox(
-      width: double.infinity,
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
-            child: Image.asset("assets/images/img2.png", fit: BoxFit.fill),
-          ),
-          Positioned(
-            bottom: 20,
-            left: 120,
-            child: Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(4, 4),
-                    spreadRadius: 0,
-                    blurRadius: 16,
-                    color: Color(0xB2DAE5F2),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(shape: BoxShape.circle),
-                    child: Image.asset("assets/images/img1.png"),
-                  ),
-                  SizedBox(width: 8),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Miss Zachary Will",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xff1D1F24),
-                        ),
-                      ),
-                      Text(
-                        "Beautician",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xff827BEB),
-                        ),
-                      ),
-                      Text(
-                        "Doloribus saepe aut necessit qui \nnon qui.",
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xff6B6B6B),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 2,
-                              horizontal: 6,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40),
-
-                              color: Color(0x14827BEB),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset("assets/images/star.png"),
-                                Text(
-                                  "4.9",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: const Color(0xFF1D1F24),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 31,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xff827BEB),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                              ),
-                              onPressed: () {},
-                              child: Text(
-                                "Book Now",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

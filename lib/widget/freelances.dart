@@ -1,11 +1,13 @@
+import 'package:assigment_1/widget/rating_widget.dart';
 import 'package:flutter/material.dart';
 
 class FreelancesInfo extends StatelessWidget {
   final String? img;
   final String? name;
   final String? title;
+  final double? rate;
 
-  const FreelancesInfo({super.key, this.img, this.name, this.title});
+  const FreelancesInfo({super.key, this.img, this.name, this.title, this.rate});
 
   @override
   Widget build(BuildContext context) {
@@ -50,27 +52,7 @@ class FreelancesInfo extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 4),
-
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 2, horizontal: 6),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-
-                    color: Color(0x14827BEB),
-                  ),
-                  child: Row(
-                    children: [
-                      Image.asset("assets/images/star.png"),
-                      Text(
-                        "4.9",
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: const Color(0xFF1D1F24),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                RatingWidget(rate: rate ?? 4.5),
               ],
             ),
           ),
