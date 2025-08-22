@@ -57,14 +57,7 @@ class _TextFiledWidgetState extends State<TextFiledWidget> {
       ),
       child: TextFormField(
         controller: widget.controller,
-        validator: (value) {
-          if (value == null || value.trim().isEmpty) {
-            // return 'required_field';
-          } else if (widget.isPassword && value.length < 6) {
-            // return 'password_condition';
-          }
-          return null;
-        },
+        validator: widget.validator,
         textInputAction: widget.textInputAction,
 
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -80,7 +73,7 @@ class _TextFiledWidgetState extends State<TextFiledWidget> {
         decoration: InputDecoration(
           hintText: widget.hintText,
 
-          contentPadding: EdgeInsets.symmetric(horizontal: 14, vertical: 20),
+          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           hintStyle: TextStyle(
             fontSize: 15,
             color: Color(0xff8F9BB3),
@@ -113,7 +106,7 @@ class _TextFiledWidgetState extends State<TextFiledWidget> {
                     ),
                   )
                   : null),
-          errorMaxLines: 2,
+          errorMaxLines: 1,
           isDense: true,
 
           enabledBorder: InputBorder.none,

@@ -3,9 +3,11 @@ import 'package:assigment_1/widget/button_widget.dart';
 import 'package:assigment_1/widget/text_filed_widget.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  SignUpScreen({super.key});
   final TextEditingController email = TextEditingController();
+  final TextEditingController name = TextEditingController();
+  final TextEditingController conformPassword = TextEditingController();
   final TextEditingController password = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
@@ -34,18 +36,10 @@ class LoginScreen extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "Welcome ",
+                      text: "Sign In ",
                       style: Theme.of(context).textTheme.displayLarge?.copyWith(
                         fontWeight: FontWeight.w600,
                         color: Theme.of(context).iconTheme.color,
-                      ),
-                    ),
-                    TextSpan(
-                      text: "Back!",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w600,
-                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                   ],
@@ -53,12 +47,12 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Text(
-                'Login to your account',
+                'Sign Up to your account',
                 style: Theme.of(
                   context,
                 ).textTheme.displayMedium?.copyWith(fontSize: 12),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height / 9),
+              SizedBox(height: MediaQuery.of(context).size.height / 14),
 
               Form(
                 key: _formKey,
@@ -67,7 +61,15 @@ class LoginScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       TextFiledWidget(
-                        hintText: 'Email or Phone Number',
+                        hintText: 'Name',
+                        controller: name,
+                        validator: (value) {
+                          return value!.length >= 3 ? null : "Enter Valid name";
+                        },
+                      ),
+                      SizedBox(height: 16),
+                      TextFiledWidget(
+                        hintText: 'Email ',
                         controller: email,
                         validator: (value) {
                           if (value!.isEmpty) {
@@ -95,6 +97,17 @@ class LoginScreen extends StatelessWidget {
                           }
                         },
                       ),
+                      SizedBox(height: 16),
+                      TextFiledWidget(
+                        hintText: 'Conform Password',
+                        controller: conformPassword,
+                        isPassword: true,
+                        validator: (value) {
+                          return value == password.text
+                              ? null
+                              : 'Password should be similar';
+                        },
+                      ),
                       SizedBox(height: 40),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -102,7 +115,7 @@ class LoginScreen extends StatelessWidget {
                           onTap: () {
                             _login(context: context);
                           },
-                          text: 'Sign In',
+                          text: 'Sign Up',
                         ),
                       ),
                       SizedBox(height: 50),
@@ -110,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "You don't have an account?",
+                            "You have an account?",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -124,11 +137,11 @@ class LoginScreen extends StatelessWidget {
                               print("object");
                               Navigator.pushReplacementNamed(
                                 context,
-                                Routes.signup,
+                                Routes.login,
                               );
                             },
                             child: Text(
-                              "Sign Up",
+                              "Sign In",
                               style: TextStyle(
                                 color: Color(0xff007AFF),
                                 fontSize: 15,

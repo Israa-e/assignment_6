@@ -1,4 +1,8 @@
 import 'package:assigment_1/auth/login_screen.dart';
+import 'package:assigment_1/auth/sign_up_screen.dart';
+import 'package:assigment_1/core/routes.dart';
+import 'package:assigment_1/home/home_screen.dart';
+import 'package:assigment_1/intro/main_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +16,13 @@ void main() {
         ),
         primaryColor: Color(0xff007AFF),
       ),
+      routes: {
+        Routes.login: (context) => LoginScreen(),
+        Routes.home: (context) => HomeScreen(),
+        Routes.mainScreen: (context) => MainScreen(),
+        Routes.signup: (context) => SignUpScreen(),
+      },
+
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
     ),

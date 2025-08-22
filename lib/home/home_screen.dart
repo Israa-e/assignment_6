@@ -1,7 +1,7 @@
+import 'package:assigment_1/auth/login_screen.dart';
 import 'package:assigment_1/widget/book_widget.dart';
 import 'package:assigment_1/widget/deal_widget.dart';
 import 'package:assigment_1/widget/freelances.dart';
-import 'package:assigment_1/widget/rating_widget.dart';
 import 'package:assigment_1/widget/section_widget.dart';
 import 'package:assigment_1/widget/top_services.dart';
 import 'package:assigment_1/widget/workshops_widget.dart';
@@ -24,7 +24,17 @@ class _HomeScreenState extends State<HomeScreen> {
           scrolledUnderElevation: 0,
 
           elevation: 0,
-          leading: Image.asset('assets/icons/menu.png'),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => LoginScreen()),
+              );
+            },
+            icon: Directionality(
+              textDirection: TextDirection.ltr,
+              child: Icon(Icons.logout),
+            ),
+          ),
           title: Image.asset("assets/images/logo.png", height: 24),
           actions: [
             Image.asset('assets/icons/shopping_cart.png'),
@@ -185,6 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             onPressed: () {},
                             child: Row(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text("BUY IT NOW"),
                                 SizedBox(width: 10),

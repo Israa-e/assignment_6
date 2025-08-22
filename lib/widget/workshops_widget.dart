@@ -48,7 +48,7 @@ class WorkshopsWidget extends StatelessWidget {
 
           // باقي المحتوى
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(3.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -60,7 +60,7 @@ class WorkshopsWidget extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: 4),
+                SizedBox(height: 2),
                 Text(
                   'Beautician',
                   style: TextStyle(
@@ -69,14 +69,14 @@ class WorkshopsWidget extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                SizedBox(height: 6),
+                SizedBox(height: 3),
                 Text(
                   'Occaecati aut nam beatae quo non deserunt consequatur.',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: Colors.black54, fontSize: 12),
+                  style: TextStyle(color: Colors.black54, fontSize: 10),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 6),
 
                 InkWell(
                   onTap: () {},
