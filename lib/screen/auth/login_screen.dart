@@ -159,7 +159,11 @@ class LoginScreen extends StatelessWidget {
         ),
       );
     } else {
-      Navigator.pushReplacementNamed(context, Routes.mainScreen);
+      Navigator.pushReplacementNamed(
+        context,
+        Routes.mainScreen,
+        arguments: email.text,
+      );
     }
   }
 }

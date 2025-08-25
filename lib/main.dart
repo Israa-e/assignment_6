@@ -1,8 +1,8 @@
-import 'package:assigment_1/auth/login_screen.dart';
-import 'package:assigment_1/auth/sign_up_screen.dart';
+import 'package:assigment_1/screen/auth/login_screen.dart';
+import 'package:assigment_1/screen/auth/sign_up_screen.dart';
 import 'package:assigment_1/core/routes.dart';
-import 'package:assigment_1/home/home_screen.dart';
-import 'package:assigment_1/intro/main_screen.dart';
+import 'package:assigment_1/screen/home/home_screen.dart';
+import 'package:assigment_1/screen/intro/main_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

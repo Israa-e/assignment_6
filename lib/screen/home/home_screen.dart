@@ -1,4 +1,7 @@
-import 'package:assigment_1/auth/login_screen.dart';
+import 'package:assigment_1/data/freelances_info_model.dart';
+import 'package:assigment_1/data/top_service_model.dart';
+import 'package:assigment_1/screen/auth/login_screen.dart';
+import 'package:assigment_1/core/routes.dart';
 import 'package:assigment_1/widget/book_widget.dart';
 import 'package:assigment_1/widget/deal_widget.dart';
 import 'package:assigment_1/widget/freelances.dart';
@@ -16,25 +19,135 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<FreelancesInfoModel> freelances = [
+    FreelancesInfoModel(
+      img: "assets/images/img1.png",
+      name: "John Doe",
+      title: "Flutter Developer",
+      rate: 2.0,
+    ),
+    FreelancesInfoModel(
+      img: "assets/images/img1.png",
+      name: "Jane Smith",
+      title: "Web Designer",
+      rate: 3.0,
+    ),
+    FreelancesInfoModel(
+      img: "assets/images/img1.png",
+      name: "Alice Johnson",
+      title: "Graphic Designer",
+      rate: 5.0,
+    ),
+    FreelancesInfoModel(
+      img: "assets/images/img1.png",
+      name: "Bob Brown",
+      title: "UI/UX Designer",
+      rate: 4.0,
+    ),
+  ];
+
+  List<TopServiceModel> topServices = [
+    TopServiceModel(
+      img: "assets/images/img2.png",
+      imgPerson: "assets/images/img1.png",
+      name: "Isaac Mcdonald",
+      title: "Makeup Artist",
+      description: "Expert in makeup and beauty .",
+      rate: 4.5,
+      onTap: () {},
+    ),
+    TopServiceModel(
+      img: "assets/images/img2.png",
+      imgPerson: "assets/images/img1.png",
+      name: "Wade Warren",
+      title: "Beautician",
+      description: "Expert in skincare and makeup.",
+      rate: 4.5,
+      onTap: () {},
+    ),
+    TopServiceModel(
+      img: "assets/images/img2.png",
+      imgPerson: "assets/images/img1.png",
+      name: "Emily Davis",
+      title: "web designer",
+      description: "Expert in web design and development.",
+      rate: 4.5,
+      onTap: () {},
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(color: Color(0xff827BEB)),
+                child: Text(
+                  'Menu',
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Home'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.account_circle),
+                title: Text('Account'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.chat),
+                title: Text('Chat'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.explore),
+                title: Text('Explore'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.article),
+                title: Text('Blog'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.login),
+                title: Text('Login'),
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, Routes.login);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout_sharp),
+                title: Text('Logout'),
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, Routes.signup);
+                },
+              ),
+            ],
+          ),
+        ),
         appBar: AppBar(
           scrolledUnderElevation: 0,
 
           elevation: 0,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (_) => LoginScreen()),
-              );
-            },
-            icon: Directionality(
-              textDirection: TextDirection.ltr,
-              child: Icon(Icons.logout),
-            ),
-          ),
+
           title: Image.asset("assets/images/logo.png", height: 24),
           actions: [
             Image.asset('assets/icons/shopping_cart.png'),
@@ -243,13 +356,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder:
                     (context, index) => Padding(
                       padding: const EdgeInsets.only(left: 24.0, bottom: 23),
-                      child: FreelancesInfo(
-                        img: "assets/images/img1.png",
-                        name: "Wade Warren",
-                        title: "Beautician",
-                      ),
+                      child: FreelancesInfoWidget(model: freelances[index]),
                     ),
-                itemCount: 20,
+                itemCount: freelances.length,
               ),
             ),
             SizedBox(height: 40),
@@ -263,8 +372,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: 3,
-                itemBuilder: (context, index) => TopServices(),
+                itemCount: topServices.length,
+                itemBuilder:
+                    (context, index) =>
+                        TopServicesWidget(model: topServices[index]),
                 separatorBuilder: (BuildContext context, int index) {
                   return SizedBox(height: 25);
                 },

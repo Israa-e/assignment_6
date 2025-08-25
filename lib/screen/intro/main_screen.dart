@@ -1,4 +1,8 @@
-import 'package:assigment_1/home/home_screen.dart';
+import 'package:assigment_1/screen/home/account.dart';
+import 'package:assigment_1/screen/home/blog.dart';
+import 'package:assigment_1/screen/home/chat.dart';
+import 'package:assigment_1/screen/home/explore.dart';
+import 'package:assigment_1/screen/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -13,13 +17,10 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   final List<Widget> _screens = [
     const HomeScreen(),
-    const HomeScreen(),
-    const HomeScreen(),
-    const HomeScreen(),
-    const HomeScreen(),
-    // const TasksScreen(),
-    // const InboxScreen(),
-    // const ProfilesScreen(),
+    const Explore(),
+    const Chat(),
+    const Blog(),
+    const Account(),
   ];
   @override
   Widget build(BuildContext context) {

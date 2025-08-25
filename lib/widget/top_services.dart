@@ -1,24 +1,10 @@
+import 'package:assigment_1/data/top_service_model.dart';
 import 'package:assigment_1/widget/rating_widget.dart';
 import 'package:flutter/material.dart';
 
-class TopServices extends StatelessWidget {
-  final String? img;
-  final String? imgPerson;
-  final String? name;
-  final String? title;
-  final String? description;
-  final double? rate;
-  final Function()? onTap;
-  const TopServices({
-    super.key,
-    this.img,
-    this.imgPerson,
-    this.name,
-    this.title,
-    this.description,
-    this.rate,
-    this.onTap,
-  });
+class TopServicesWidget extends StatelessWidget {
+  final TopServiceModel model;
+  const TopServicesWidget({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +20,7 @@ class TopServices extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
               image: DecorationImage(
-                image: AssetImage("assets/images/${img ?? "img2"}.png"),
+                image: AssetImage(model.img ?? "assets/images/img2.png"),
               ),
             ),
           ),
@@ -61,7 +47,7 @@ class TopServices extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(shape: BoxShape.circle),
                     child: Image.asset(
-                      "assets/images/${imgPerson ?? "img1"}.png",
+                      model.imgPerson ?? "assets/images/img1.png",
                     ),
                   ),
                   SizedBox(width: 8),
@@ -70,7 +56,7 @@ class TopServices extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        name ?? "Miss Zachary Will",
+                        model.name ?? "Miss Zachary Will",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -78,7 +64,7 @@ class TopServices extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        title ?? "Beautician",
+                        model.title ?? "Beautician",
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
@@ -86,7 +72,7 @@ class TopServices extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        description ??
+                        model.description ??
                             "Doloribus saepe aut necessit qui \nnon qui.",
                         style: TextStyle(
                           fontSize: 10,
@@ -96,7 +82,7 @@ class TopServices extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          RatingWidget(rate: rate ?? 4.5),
+                          RatingWidget(rate: model.rate ?? 4.5),
                           SizedBox(
                             height: 31,
                             child: ElevatedButton(
