@@ -1,25 +1,25 @@
 import 'package:assigment_1/screen/home/account.dart';
-import 'package:assigment_1/screen/home/blog.dart';
-import 'package:assigment_1/screen/home/chat.dart';
+import 'package:assigment_1/screen/home/all_product.dart';
+import 'package:assigment_1/screen/home/books.dart';
 import 'package:assigment_1/screen/home/explore.dart';
 import 'package:assigment_1/screen/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class MainNavScreen extends StatefulWidget {
+  const MainNavScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MainNavScreen> createState() => _MainNavScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
+class _MainNavScreenState extends State<MainNavScreen> {
+  int _currentIndex = 1;
   final List<Widget> _screens = [
     const HomeScreen(),
-    const Explore(),
-    const Chat(),
-    const Blog(),
+    const HomeV2(),
+    const Books(),
+    const ExploreCharacters(),
     const Account(),
   ];
   @override
@@ -66,20 +66,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
             ),
-            label: 'Explore',
-          ),
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: SvgPicture.asset(
-                "assets/icons/chat.svg",
-                colorFilter: ColorFilter.mode(
-                  _currentIndex == 2 ? Color(0xff827BEB) : Color(0xff676D75),
-                  BlendMode.srcIn,
-                ),
-              ),
-            ),
-            label: 'Chat',
+            label: 'Products',
           ),
           BottomNavigationBarItem(
             icon: Padding(
@@ -87,13 +74,27 @@ class _MainScreenState extends State<MainScreen> {
               child: SvgPicture.asset(
                 "assets/icons/blog.svg",
                 colorFilter: ColorFilter.mode(
+                  _currentIndex == 2 ? Color(0xff827BEB) : Color(0xff676D75),
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+            label: 'Books',
+          ),
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: SvgPicture.asset(
+                "assets/icons/chat.svg",
+                colorFilter: ColorFilter.mode(
                   _currentIndex == 3 ? Color(0xff827BEB) : Color(0xff676D75),
                   BlendMode.srcIn,
                 ),
               ),
             ),
-            label: 'Blog',
+            label: 'Characters',
           ),
+
           BottomNavigationBarItem(
             icon: Padding(
               padding: const EdgeInsets.only(top: 8.0),

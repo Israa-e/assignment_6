@@ -1,17 +1,19 @@
-import 'package:assigment_1/data/character_model.dart';
-import 'package:assigment_1/widget/explore_characters.dart';
+import 'dart:convert';
+
+import 'package:assigment_1/data/book_model.dart';
+import 'package:assigment_1/widget/harry_books.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-class ExploreCharacters extends StatefulWidget {
-  const ExploreCharacters({super.key});
+class Books extends StatefulWidget {
+  const Books({super.key});
 
   @override
-  State<ExploreCharacters> createState() => _ExploreCharactersState();
+  State<Books> createState() => _BooksState();
 }
 
-class _ExploreCharactersState extends State<ExploreCharacters> {
-  List<Character> characters = [];
+class _BooksState extends State<Books> {
+  List<Book> books = [];
   @override
   void initState() {
     fetchData().then((value) {});
@@ -24,7 +26,7 @@ class _ExploreCharactersState extends State<ExploreCharacters> {
       appBar: AppBar(
         backgroundColor: Color(0xff1D1F24),
         title: Text(
-          "Explore Characters",
+          "Books",
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -35,13 +37,13 @@ class _ExploreCharactersState extends State<ExploreCharacters> {
         elevation: 0,
       ),
       body:
-          characters.isEmpty
+          books.isEmpty
               ? Center(child: CircularProgressIndicator())
               : ListView.builder(
                 itemBuilder: (context, index) {
-                  return ExploreCharactersWidget(character: characters[index]);
+                  return HarryBooksWidget(book: books[index]);
                 },
-                itemCount: characters.length,
+                itemCount: books.length,
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
               ),
@@ -50,9 +52,9 @@ class _ExploreCharactersState extends State<ExploreCharacters> {
 
   fetchData() async {
     var response = await get(
-      Uri.parse("https://potterapi-fedeperin.vercel.app/en/characters"),
+      Uri.parse("https://potterapi-fedeperin.vercel.app/en/books"),
     );
-    characters = charactersFromJson(response.body);
+    books = bookFromJson(response.body);
     setState(() {});
   }
 }

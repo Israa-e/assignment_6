@@ -8,53 +8,62 @@ class FreelancesInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      alignment: Alignment.center,
-      children: [
-        CircleAvatar(radius: 35, backgroundImage: AssetImage(model.img)),
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/freelance_info_details',
+          arguments: model,
+        );
+      },
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.center,
+        children: [
+          CircleAvatar(radius: 35, backgroundImage: AssetImage(model.img)),
 
-        Positioned(
-          bottom: -35,
-          left: -3,
-          child: Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xffE7EFFC),
-                  offset: Offset(2, 2),
-                  blurRadius: 16,
-                  spreadRadius: 0,
-                ),
-              ],
-            ),
-            child: Column(
-              children: [
-                Text(
-                  model.name,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: const Color(0xFF1D1F24).withValues(alpha: 0.7),
+          Positioned(
+            bottom: -35,
+            left: -3,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xffE7EFFC),
+                    offset: Offset(2, 2),
+                    blurRadius: 16,
+                    spreadRadius: 0,
                   ),
-                ),
-                SizedBox(height: 4),
-                Text(
-                  model.title,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: const Color(0xFF1D1F24),
+                ],
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    model.name,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: const Color(0xFF1D1F24).withValues(alpha: 0.7),
+                    ),
                   ),
-                ),
-                SizedBox(height: 4),
-                RatingWidget(rate: model.rate ?? 4.5),
-              ],
+                  SizedBox(height: 4),
+                  Text(
+                    model.title,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: const Color(0xFF1D1F24),
+                    ),
+                  ),
+                  SizedBox(height: 4),
+                  RatingWidget(rate: model.rate ?? 4.5),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
