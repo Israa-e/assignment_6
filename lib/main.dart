@@ -1,14 +1,20 @@
 import 'package:assigment_1/screen/auth/login_screen.dart';
 import 'package:assigment_1/screen/auth/sign_up_screen.dart';
 import 'package:assigment_1/core/routes.dart';
+import 'package:assigment_1/screen/home/counter.dart';
 import 'package:assigment_1/screen/home/freelances_info_details.dart';
 import 'package:assigment_1/screen/home/home_screen.dart';
 import 'package:assigment_1/screen/home/all_product.dart';
 import 'package:assigment_1/screen/intro/main_nav_screen.dart';
 import 'package:assigment_1/widget/product_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool? isLoggedIn = prefs.getBool(LoginScreen.loginKey) ?? false;
+  String email = prefs.getString(LoginScreen.userEmailKey) ?? '';
   runApp(
     MaterialApp(
       theme: ThemeData(
@@ -30,7 +36,7 @@ void main() {
       },
 
       debugShowCheckedModeBanner: false,
-      home: MainNavScreen(),
+      home: email != "" ? HomeScreen(email: email) : LoginScreen(),
     ),
   );
 }

@@ -12,7 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:stroke_text/stroke_text.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final String email;
+  const HomeScreen({super.key, this.email = ''});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -162,7 +163,12 @@ class _HomeScreenState extends State<HomeScreen> {
           physics: BouncingScrollPhysics(),
           children: [
             SizedBox(height: 18),
-
+            Text(
+              "Hello, ${widget.email}",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Row(

@@ -1,10 +1,14 @@
 import 'package:assigment_1/core/routes.dart';
+import 'package:assigment_1/screen/home/home_screen.dart';
 import 'package:assigment_1/widget/button_widget.dart';
 import 'package:assigment_1/widget/text_filed_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+  static const String loginKey = 'loginKey';
+  static const String userEmailKey = 'userEmailKey';
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -17,6 +21,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool isLoading = false;
+
+  String emailFromPref = '';
 
   @override
   Widget build(BuildContext context) {
@@ -199,11 +205,18 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       );
     } else {
-      Navigator.pushReplacementNamed(
+      print("email: ${email.text}, password: ${password.text}");
+      loginUser(email.text);
+      Navigator.pushReplacement(
         context,
-        Routes.mainScreen,
-        arguments: email.text,
+        MaterialPageRoute(builder: (context) => HomeScreen(email: email.text)),
       );
     }
+  }
+
+  loginUser(email) async {
+    // Your login logic here
+    final pref = await SharedPreferences.getInstance();
+    pref.setString(LoginScreen.userEmailKey, email);
   }
 }
