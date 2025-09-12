@@ -14,6 +14,8 @@ class NotesScreen extends StatefulWidget {
 
 class _NotesScreenState extends State<NotesScreen> {
   String notesKey = 'notes';
+  List notesList = [];
+  
   Map<String,String> notes ={
     'Sample Note': 'This is a sample note. You can add, edit, and delete notes as you like.'
   };
