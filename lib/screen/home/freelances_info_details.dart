@@ -36,7 +36,7 @@ class FreelanceInfoDetails extends StatelessWidget {
             style: TextStyle(fontSize: 16, color: const Color(0xFF1D1F24)),
           ),
           SizedBox(height: 4),
-          RatingWidget(rate: model.rate ?? 4.5),
+          RatingWidget(rate: model.rate ),
         ],
       ),
     );

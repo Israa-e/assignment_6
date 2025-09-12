@@ -1,6 +1,5 @@
 import 'package:assigment_1/data/freelances_info_model.dart';
 import 'package:assigment_1/data/top_service_model.dart';
-import 'package:assigment_1/screen/auth/login_screen.dart';
 import 'package:assigment_1/core/routes.dart';
 import 'package:assigment_1/widget/book_widget.dart';
 import 'package:assigment_1/widget/deal_widget.dart';
